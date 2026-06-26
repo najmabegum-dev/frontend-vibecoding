@@ -41,7 +41,7 @@
 
   /* total initial entry orchestration budget: hard cap 500ms */
   --dur-entry-budget: 500ms;
-  --dur-entry-stagger: 60ms;   /* per-item stagger inside the budget */
+  --dur-entry-stagger: 45ms;   /* per-item stagger inside the budget */
   --dur-entry-item: 320ms;
   --ease-entry: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out, decisive */
 }
@@ -62,6 +62,27 @@
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-entry {
+  animation: fade-up var(--dur-entry-item) var(--ease-entry) both;
+}
+
+.hero-entry-1 { animation-delay: 0ms; }
+.hero-entry-2 { animation-delay: calc(var(--dur-entry-stagger) * 1); }
+.hero-entry-3 { animation-delay: calc(var(--dur-entry-stagger) * 2); }
+.hero-entry-4 { animation-delay: calc(var(--dur-entry-stagger) * 3); }
+.hero-entry-5 { animation-delay: calc(var(--dur-entry-stagger) * 4); }
 
 body {
   margin: 0;
