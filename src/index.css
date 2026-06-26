@@ -74,6 +74,37 @@ html {
   }
 }
 
+@keyframes bg-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes orb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+@keyframes orb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 30px) scale(1.05); }
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, #172B36 0%, #114C5A 40%, #172B36 70%, #1a3a2a 100%);
+  background-size: 300% 300%;
+  animation: bg-shift 12s ease infinite;
+}
+
+#features::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,200,1,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
 .hero-entry {
   animation: fade-up var(--dur-entry-item) var(--ease-entry) both;
 }

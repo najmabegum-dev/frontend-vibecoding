@@ -12,15 +12,17 @@ import { ArrowTrendingUp } from '../icons.jsx'
  */
 function PricingCard({ tier }) {
   const { id, name, tagline, featured, features } = tier
+  const highlightBorder = id === 'starter' || id === 'enterprise'
 
   return (
     <article
-      className={`relative flex flex-col rounded-3xl p-8 transition-transform duration-[var(--dur-micro)] [transition-timing-function:var(--ease-micro)] hover:-translate-y-1 ${
+      className={`relative flex flex-col rounded-3xl p-8 transition-transform duration-[var(--dur-micro)] [transition-timing-function:var(--ease-micro)] hover:-translate-y-1 ${highlightBorder ? 'ring-1 ring-white/10 hover:ring-[var(--color-forsythia)]/40 shadow-[0_0_30px_0_rgba(255,200,1,0.05)] hover:shadow-[0_0_50px_0_rgba(255,200,1,0.15)] transition-all duration-[var(--dur-reflow)]' : ''} ${featured ? 'overflow-visible' : 'group hover:scale-[1.02] hover:shadow-[0_0_40px_0_rgba(255,200,1,0.08)] transition-all duration-[var(--dur-micro)] [transition-timing-function:var(--ease-micro)]'} ${
         featured
           ? 'bg-gradient-to-b from-forsythia/15 to-transparent border-2 border-forsythia'
           : 'bg-arctic/[0.04] border border-arctic/10'
       }`}
     >
+      {featured && <div className="absolute inset-0 bg-[var(--color-forsythia)]/5 blur-2xl rounded-3xl -z-10" />}
       {featured && (
         <span className="absolute -top-3 left-8 px-3 py-1 rounded-full bg-forsythia text-noir text-xs font-mono font-bold uppercase tracking-wide">
           Most Popular
@@ -39,7 +41,7 @@ function PricingCard({ tier }) {
 
       <a
         href="#get-started"
-        className={`mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-sm transition-all duration-[var(--dur-micro)] [transition-timing-function:var(--ease-micro)] hover:gap-3 ${
+        className={`mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-sm transition-all duration-[var(--dur-micro)] [transition-timing-function:var(--ease-micro)] hover:gap-3 hover:brightness-110 active:scale-95 ${
           featured
             ? 'bg-forsythia text-noir hover:bg-saffron'
             : 'bg-arctic/10 text-arctic hover:bg-arctic/15'

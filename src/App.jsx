@@ -12,15 +12,23 @@ function App() {
             Conduit
           </a>
           <div className="flex items-center gap-5 text-sm text-arctic/70">
-            <a href="#features" className="transition-colors hover:text-forsythia">Features</a>
-            <a href="#pricing" className="transition-colors hover:text-forsythia">Pricing</a>
-            <a href="#footer" className="transition-colors hover:text-forsythia">Contact</a>
+            <a href="#features" className="relative transition-colors hover:text-forsythia after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 hover:after:w-full after:bg-[var(--color-forsythia)] after:transition-all after:duration-[var(--dur-micro)]">
+              Features
+            </a>
+            <a href="#pricing" className="relative transition-colors hover:text-forsythia after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 hover:after:w-full after:bg-[var(--color-forsythia)] after:transition-all after:duration-[var(--dur-micro)]">
+              Pricing
+            </a>
+            <a href="#footer" className="relative transition-colors hover:text-forsythia after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 hover:after:w-full after:bg-[var(--color-forsythia)] after:transition-all after:duration-[var(--dur-micro)]">
+              Contact
+            </a>
           </div>
         </nav>
       </header>
 
       <main id="top">
-        <section className="px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+        <section className="relative overflow-hidden hero-bg px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+          <div className="pointer-events-none absolute top-20 left-10 h-72 w-72 rounded-full bg-[var(--color-forsythia)]/5 blur-3xl animate-[orb1_8s_ease-in-out_infinite]" />
+          <div className="pointer-events-none absolute bottom-10 right-20 h-96 w-96 rounded-full bg-[var(--color-nocturnal)]/40 blur-3xl animate-[orb2_11s_ease-in-out_infinite]" />
           <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-2xl">
               <p className="hero-entry hero-entry-1 font-mono text-sm uppercase tracking-[0.32em] text-forsythia">
@@ -42,7 +50,8 @@ function App() {
               </div>
             </div>
 
-            <div className="hero-entry hero-entry-5 rounded-[32px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_0_80px_rgba(17,76,90,0.18)]">
+            <div className="hero-entry hero-entry-5 relative rounded-[32px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_0_80px_rgba(17,76,90,0.18)]" style={{ boxShadow: '0 0 60px 0 rgba(255,200,1,0.12), 0 0 80px rgba(17,76,90,0.18)' }}>
+              <div className="absolute top-6 right-6 w-2 h-2 bg-[var(--color-forsythia)] rounded-full" style={{ animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' }} />
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-mono text-xs uppercase tracking-[0.24em] text-forsythia">Live orchestration</p>
