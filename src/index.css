@@ -1,0 +1,83 @@
+/* ============================================================
+   FONTS — JetBrains Mono (headers/code-feel) + Inter (body/UI)
+   per asset_package font list
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — from colorPallet asset (MP025)
+   ============================================================ */
+@theme {
+  /* palette */
+  --color-arctic: #F1F6F4;      /* Arctic Powder   — light surface */
+  --color-mint: #D9E8E2;        /* Mystic Mint     — secondary light surface */
+  --color-forsythia: #FFC801;   /* Forsythia       — primary accent */
+  --color-saffron: #FF9932;     /* Deep Saffron    — secondary accent / gradient */
+  --color-nocturnal: #114C5A;   /* Nocturnal Exp.  — mid teal, dark accent text */
+  --color-noir: #172B36;        /* Oceanic Noir    — darkest, base dark bg */
+
+  /* fonts */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* breakpoints (explicit so JS + CSS agree — needed for the
+     Context Lock Constraint resize logic in Feature 2) */
+  --breakpoint-mobile-max: 767px;
+}
+
+/* ============================================================
+   MOTION SYSTEM — exact values from Phase 1 scoring matrix
+   "Entrance & Motion Constraints"
+   ============================================================ */
+:root {
+  /* micro-interactions: hovers / toggles → 150-200ms ease-out */
+  --dur-micro: 180ms;
+  --ease-micro: cubic-bezier(0, 0, 0.2, 1); /* ease-out */
+
+  /* structural layout reflows (bento <-> accordion) → 300-400ms ease-in-out */
+  --dur-reflow: 350ms;
+  --ease-reflow: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+
+  /* total initial entry orchestration budget: hard cap 500ms */
+  --dur-entry-budget: 500ms;
+  --dur-entry-stagger: 60ms;   /* per-item stagger inside the budget */
+  --dur-entry-item: 320ms;
+  --ease-entry: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out, decisive */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-micro: 0.01ms;
+    --dur-reflow: 0.01ms;
+    --dur-entry-item: 0.01ms;
+    --dur-entry-stagger: 0ms;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-noir);
+  color: var(--color-arctic);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-forsythia);
+  color: var(--color-noir);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-forsythia);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
